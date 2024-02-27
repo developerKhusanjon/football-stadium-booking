@@ -1,0 +1,32 @@
+app:
+  jwtSecret: teststs
+  jwtExpirationInMs: 26298
+  name: booking-app-admin
+  upload:
+    path: upload
+springdoc:
+  swagger-ui:
+    path: /swagger/doc
+    operationsSorter: method
+  api-docs:
+    path: /swagger/api-docs
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/booking_db
+    username: user
+    password: pass
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL92Dialect
+    database-platform: org.hibernate.spatial.dialect.postgis.PostgisDialect
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 55MB
+server:
+  tomcat:
+    protocol-header: x-forwarded-proto
