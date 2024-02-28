@@ -12,6 +12,7 @@ import org.stadium.corelib.repo.StadiumRepository;
 import org.stadium.userapi.controller.errors.BadRequestAlertException;
 import org.stadium.userapi.mapper.BookingMapper;
 import org.stadium.userapi.service.BookingManageService;
+import org.stadium.userapi.service.dto.AlertResponseDto;
 import org.stadium.userapi.service.dto.BookingDto;
 
 import java.time.LocalDateTime;
@@ -65,11 +66,13 @@ public class BookingManageServiceImpl implements BookingManageService {
     }
 
     @Override
-    public void cancelBookingByUserAndId(Long bookingId, User user) throws BadRequestAlertException {
+    public AlertResponseDto cancelBookingByUserAndId(Long bookingId, User user) throws BadRequestAlertException {
         boolean check = bookingRepository.checkForBooked(bookingId, user.getId());
         if (!check)
             throw new BadRequestAlertException("Stadium not booked by this user", "Booking", "id");
 
         bookingRepository.cancelBookingById(bookingId);
+
+        return new AlertResponseDto("Booking successfully canceled", true);
     }
 }

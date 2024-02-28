@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.stadium.adminapi.controller.error.BadRequestAlertException;
 import org.stadium.adminapi.service.StadiumManageService;
@@ -40,6 +41,7 @@ public class StadiumManageController {
         return ResponseEntity.ok(stadiumManageService.findById(id));
     }
 
+    @Secured("ADMIN")
     @PostMapping(value = "/create-stadium", consumes = {"multipart/form-data"})
     public ResponseEntity<StadiumDto> save(@ModelAttribute @Valid StadiumRequestDto requestDto) throws BadRequestAlertException {
         if (requestDto.getId() != null)
@@ -47,6 +49,7 @@ public class StadiumManageController {
         return ResponseEntity.ok(stadiumManageService.save(requestDto));
     }
 
+    @Secured("ADMIN")
     @PutMapping(value = "/{id}/update-stadium", consumes = {"multipart/form-data"})
     public ResponseEntity<StadiumDto> update(@PathVariable("id") Long id, @ModelAttribute @Valid StadiumRequestDto requestDto) throws BadRequestAlertException {
         return ResponseEntity.ok(stadiumManageService.update(id, requestDto));
@@ -63,6 +66,7 @@ public class StadiumManageController {
         return ResponseEntity.status(200).contentType(MediaType.IMAGE_JPEG).header("Content-Disposition", "inline;").body(download);
     }
 
+    @Secured("ADMIN")
     @DeleteMapping("/delete-stadium/{id}")
     public ResponseEntity<AlertResponseDto> deleteArticle(@PathVariable Long id) throws BadRequestAlertException {
         return ResponseEntity.ok(stadiumManageService.deleteStadiumById(id));

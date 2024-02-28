@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.stadium.adminapi.controller.error.BadRequestAlertException;
 import org.stadium.adminapi.mapper.BookingMapper;
 import org.stadium.adminapi.service.BookingManageService;
+import org.stadium.adminapi.service.dto.AlertResponseDto;
 import org.stadium.adminapi.service.dto.BookingDto;
 import org.stadium.corelib.domain.Booking;
 import org.stadium.corelib.repo.BookingRepository;
@@ -46,12 +47,14 @@ public class BookingManageServiceImpl implements BookingManageService {
     }
 
     @Override
-    public void cancelBookingById(Long id) {
+    public AlertResponseDto cancelBookingById(Long id) {
         bookingRepository.cancelBookingById(id);
+        return new AlertResponseDto("Booking successfully canceled", true);
     }
 
     @Override
-    public void deleteById(Long id) {
+    public AlertResponseDto deleteById(Long id) {
         bookingRepository.deleteById(id);
+        return new AlertResponseDto("Booking successfully deleted", true);
     }
 }

@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.stadium.corelib.domain.User;
 import org.stadium.userapi.controller.errors.BadRequestAlertException;
+import org.stadium.userapi.service.dto.AlertResponseDto;
 import org.stadium.userapi.service.dto.BookingDto;
 import org.stadium.userapi.service.dto.UserDto;
 
@@ -16,5 +17,5 @@ public interface BookingManageService {
 
     BookingDto bookStadiumByUserAndId(User user, Long stadiumId, LocalDateTime from, LocalDateTime to)  throws BadRequestAlertException;
 
-    void cancelBookingByUserAndId(Long bookingId, User user) throws BadRequestAlertException;
+    AlertResponseDto cancelBookingByUserAndId(Long bookingId, User user) throws BadRequestAlertException;
 }
