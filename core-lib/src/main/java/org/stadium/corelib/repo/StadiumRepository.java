@@ -8,5 +8,4 @@ import java.util.List;
 
 
 public interface StadiumRepository extends JpaRepository<Stadium, Long> {
-//    boolean checkForAvalaibility();
 }

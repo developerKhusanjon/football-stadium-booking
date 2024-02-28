@@ -41,8 +41,8 @@ public class StadiumManageController {
 
     @GetMapping(value = "/nearest")
     public ResponseEntity<Page<StadiumInfoDto>> findAllAvailableNeatest(Pageable pageable, @RequestParam("lon") Double lon, @RequestParam("lat") Double lat,
-                                                                        @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
-                                                                        @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to) throws BadRequestAlertException {
+                                                                        @RequestParam("from") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime from,
+                                                                        @RequestParam("to") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime to) throws BadRequestAlertException {
 
         return ResponseEntity.ok(stadiumManageService.findNearestAvailableByTimeRange(pageable, lon, lat, from, to));
     }

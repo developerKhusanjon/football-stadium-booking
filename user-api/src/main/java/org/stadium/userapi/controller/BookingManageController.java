@@ -43,8 +43,8 @@ public class BookingManageController {
 
     @PostMapping("/book")
     public ResponseEntity<BookingDto> bookStadiumByUserAndId( @RequestParam("stadiumID") Long stadiumId, @CurrentUser User user,
-                                                                        @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
-                                                                        @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to) throws BadRequestAlertException {
+                                                                        @RequestParam("from") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime from,
+                                                                        @RequestParam("to") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime to) throws BadRequestAlertException {
 
         return ResponseEntity.ok(bookingManageService.bookStadiumByUserAndId(user, stadiumId, from, to));
     }

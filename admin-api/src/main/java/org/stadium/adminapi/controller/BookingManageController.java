@@ -29,8 +29,8 @@ public class BookingManageController {
     }
 
     @GetMapping("/in-range")
-    public ResponseEntity<Page<BookingDto>> findAllByTimeRange(Pageable pageable, @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
-                                        @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to) {
+    public ResponseEntity<Page<BookingDto>> findAllByTimeRange(Pageable pageable, @RequestParam("from") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime from,
+                                        @RequestParam("to") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime to) {
         return ResponseEntity.ok(bookingManageService.findAllByTimeRange(pageable, from, to));
     }
 

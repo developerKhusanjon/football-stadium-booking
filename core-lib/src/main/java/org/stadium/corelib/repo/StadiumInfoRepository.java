@@ -16,7 +16,7 @@ public interface StadiumInfoRepository extends JpaRepository<StadiumInfo, Long>,
             "       si.name as name,\n" +
             "       si.address as address,\n" +
             "       si.price as price,\n" +
-            "       si.image_url as image_url,\n" +
+            "       si.image_id as image_id,\n" +
             "       si.stadium_id as stadium_id,\n" +
             "       st_distance(st_makepoint(:lon, :lat), st_makepoint(si.lon, si.lat)) as distance\n" +
             "FROM stadium_info si\n" +
