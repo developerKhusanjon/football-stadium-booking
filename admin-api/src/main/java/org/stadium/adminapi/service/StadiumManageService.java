@@ -14,15 +14,19 @@ public interface StadiumManageService {
 
     Page<StadiumInfoDto> findAll(Pageable pageable) throws BadRequestAlertException;
 
+    StadiumInfoDto findInfoById(Long id) throws BadRequestAlertException;
+
     StadiumDto findById(Long id) throws BadRequestAlertException;
 
-    StadiumDto save(StadiumRequestDto requestArticle) throws BadRequestAlertException;
+    StadiumDto save(StadiumRequestDto requestDto) throws BadRequestAlertException;
 
-    StadiumDto update(Long id, StadiumRequestDto requestArticle) throws BadRequestAlertException;
+    StadiumDto update(Long id, StadiumRequestDto requestDto) throws BadRequestAlertException;
 
     Resource downloadImage(Long imageId) throws BadRequestAlertException;
 
     Resource downloadCompressImage(Long imageId) throws BadRequestAlertException;
 
-    AlertResponseDto delete(Long id) throws BadRequestAlertException;
+    void deleteStadiumById(Long id);
+
+    void deleteImageById(Long id);
 }

@@ -21,8 +21,6 @@ public class StadiumInfo extends DateAudit {
 
     private String name;
 
-    private String imageUrl;
-
     //Short address info
     private String address;
 
@@ -30,6 +28,8 @@ public class StadiumInfo extends DateAudit {
 
     @Column(name = "stadium_id", nullable = false)
     private Long stadiumId;
+
+    private Long imageId;
 
     private Double lon;
 

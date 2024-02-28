@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.stadium.corelib.domain.StadiumInfo;
 
+import java.util.Optional;
+
 public interface StadiumInfoRepository extends JpaRepository<StadiumInfo, Long>, JpaSpecificationExecutor<StadiumInfo> {
     @Query(nativeQuery = true, value = "SELECT si.id as id,\n" +
             "       si.name as name,\n" +
@@ -22,4 +24,6 @@ public interface StadiumInfoRepository extends JpaRepository<StadiumInfo, Long>,
             "                                                    or (:ends  > b.from_hour and :ends < b.till_hour)))\n" +
             "ORDER BY distance", countQuery = "SELECT count(*) FROM stadium_info")
     Page<StadiumInfo> findAllByStatusOrderByDistance(Pageable pageable, @Param("lon") Double lon, @Param("lat") Double lat);
+
+    void deleteAllByStadiumId(Long stadiumId);
 }

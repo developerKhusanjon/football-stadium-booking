@@ -1,4 +1,4 @@
-package org.stadium.adminapi.service.dto;
+package org.stadium.userapi.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AlertResponseDto {
-    private String message;
-    private boolean success;
+public class RefreshDto {
+    private String token;
+    private String phone;
+    private String hash;
 }

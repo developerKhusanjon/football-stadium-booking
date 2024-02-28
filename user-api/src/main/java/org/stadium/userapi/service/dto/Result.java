@@ -1,15 +1,13 @@
-package org.stadium.adminapi.service.dto;
+package org.stadium.userapi.service.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AlertResponseDto {
+public class Result {
     private String message;
     private boolean success;
 }

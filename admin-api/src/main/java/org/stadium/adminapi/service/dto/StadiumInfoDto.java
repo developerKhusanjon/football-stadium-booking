@@ -17,14 +17,14 @@ public class StadiumInfoDto {
 
     private String name;
 
-    private String imageUrl;
-
     //Short address info
     private String address;
 
     private BigDecimal price;
 
     private Long stadiumId;
+
+    private Long imageId;
 
     private Double lon;
 

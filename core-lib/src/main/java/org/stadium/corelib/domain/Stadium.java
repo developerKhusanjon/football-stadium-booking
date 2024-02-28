@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Stadium extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +29,7 @@ public class Stadium extends DateAudit {
     @Column(columnDefinition = "TEXT")
     private String address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private StadiumImage image;
 
     private String phone1;

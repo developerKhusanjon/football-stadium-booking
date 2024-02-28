@@ -1,4 +1,4 @@
-package org.stadium.adminapi.service.dto;
+package org.stadium.userapi.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
