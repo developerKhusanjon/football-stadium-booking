@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = {"org.stadium.userapi"})
-@EntityScan(basePackages = {"org.stadium.corelib.domain","org.stadium.corelib.repo.custom"})
+@EntityScan(basePackages = {"org.stadium.corelib.domain"})
 @EnableJpaRepositories(basePackages = {"org.stadium.corelib.repo"})
 public class UserApiApplication {
 

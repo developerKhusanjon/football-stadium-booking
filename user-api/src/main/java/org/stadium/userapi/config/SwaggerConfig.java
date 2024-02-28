@@ -26,6 +26,6 @@ public class SwaggerConfig {
                                                 .bearerFormat("JWT")
                                 )
                 )
-                .info(new Info().title("BabyApp mobile api doc").version("v1.0.0"));
+                .info(new Info().title("Mini-Field booking api doc").version("v1.0.0"));
     }
 }
