@@ -61,7 +61,7 @@ public class StadiumManageServiceImpl implements StadiumManageService {
     public StadiumInfoDto findInfoById(Long id) throws BadRequestAlertException {
         Optional<StadiumInfo> stadiumInfo = stadiumInfoRepository.findById(id);
         if (stadiumInfo.isEmpty())
-            throw new BadRequestAlertException("Stadium Info not found", "Article", "id");
+            throw new BadRequestAlertException("Stadium Info not found", "Stadium", "id");
 
         return stadiumInfoMapper.toDto(stadiumInfo.get());
     }
@@ -70,7 +70,7 @@ public class StadiumManageServiceImpl implements StadiumManageService {
     public StadiumDto findById(Long id) throws BadRequestAlertException {
         Optional<Stadium> stadium = stadiumRepository.findById(id);
         if (stadium.isEmpty())
-            throw new BadRequestAlertException("Stadium not found", "Article", "id");
+            throw new BadRequestAlertException("Stadium not found", "Stadium", "id");
 
         return stadiumMapper.toDto(stadium.get());
     }
@@ -111,7 +111,7 @@ public class StadiumManageServiceImpl implements StadiumManageService {
     public StadiumDto update(Long id, StadiumRequestDto requestDto) throws BadRequestAlertException {
         Optional<Stadium> stadium = stadiumRepository.findById(id);
 
-        if (stadium.isEmpty()) throw new BadRequestAlertException("stadium not found", "Article", "id");
+        if (stadium.isEmpty()) throw new BadRequestAlertException("stadium not found", "Stadium", "id");
 
         StadiumInfo stadiumInfo = StadiumInfo.builder()
                 .stadiumId(stadium.get().getId())

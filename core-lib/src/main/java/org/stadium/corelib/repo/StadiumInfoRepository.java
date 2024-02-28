@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.stadium.corelib.domain.StadiumInfo;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 public interface StadiumInfoRepository extends JpaRepository<StadiumInfo, Long>, JpaSpecificationExecutor<StadiumInfo> {
@@ -23,7 +24,8 @@ public interface StadiumInfoRepository extends JpaRepository<StadiumInfo, Long>,
             "                                           and ((:begins > b.from_hour and :begins < b.till_hour)\n" +
             "                                                    or (:ends  > b.from_hour and :ends < b.till_hour)))\n" +
             "ORDER BY distance", countQuery = "SELECT count(*) FROM stadium_info")
-    Page<StadiumInfo> findAllByStatusOrderByDistance(Pageable pageable, @Param("lon") Double lon, @Param("lat") Double lat);
+    Page<StadiumInfo> findNearestByTimeRangeOrderByDistance(Pageable pageable, @Param("lon") Double lon, @Param("lat") Double lat,
+                                                     @Param("begins") LocalDateTime begins, @Param("ends") LocalDateTime ends);
 
     void deleteAllByStadiumId(Long stadiumId);
 }

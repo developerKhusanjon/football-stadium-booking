@@ -6,4 +6,5 @@ import org.stadium.corelib.domain.Stadium;
 import java.util.List;
 
 public interface StadiumRepository extends JpaRepository<Stadium, Long> {
+    boolean checkForAvalaibility();
 }
