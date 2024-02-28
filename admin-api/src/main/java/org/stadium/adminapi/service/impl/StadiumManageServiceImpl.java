@@ -12,6 +12,7 @@ import org.stadium.adminapi.controller.error.BadRequestAlertException;
 import org.stadium.adminapi.mapper.StadiumInfoMapper;
 import org.stadium.adminapi.mapper.StadiumMapper;
 import org.stadium.adminapi.service.StadiumManageService;
+import org.stadium.adminapi.service.dto.AlertResponseDto;
 import org.stadium.adminapi.service.dto.StadiumDto;
 import org.stadium.adminapi.service.dto.StadiumInfoDto;
 import org.stadium.adminapi.service.dto.StadiumRequestDto;
@@ -175,12 +176,14 @@ public class StadiumManageServiceImpl implements StadiumManageService {
         throw new BadRequestAlertException("File not found", "image", "id", HttpStatus.NOT_FOUND);
     }
 
-    public void deleteStadiumById(Long id) {
+    public AlertResponseDto deleteStadiumById(Long id) {
         stadiumRepository.findById(id).ifPresent(stadium -> {
             deleteImageById(stadium.getImage().getId());
             stadiumInfoRepository.deleteAllByStadiumId(stadium.getId());
             stadiumRepository.deleteById(id);
         });
+
+        return new AlertResponseDto("Stadium successfully deleted", true);
     }
 
     private StadiumImage uploadAndSaveImage(MultipartFile file, MultipartFile compressFile) throws BadRequestAlertException {

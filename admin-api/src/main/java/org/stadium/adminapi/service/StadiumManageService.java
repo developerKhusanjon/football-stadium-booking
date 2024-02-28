@@ -26,7 +26,7 @@ public interface StadiumManageService {
 
     Resource downloadCompressImage(Long imageId) throws BadRequestAlertException;
 
-    void deleteStadiumById(Long id);
+    AlertResponseDto deleteStadiumById(Long id);
 
     void deleteImageById(Long id);
 }
