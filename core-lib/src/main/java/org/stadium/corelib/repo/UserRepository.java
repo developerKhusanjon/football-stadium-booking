@@ -50,10 +50,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "         (delete from user_credential\n" +
             "             where user_credential.user_id=:userId\n" +
             "           returning user_credential.id),\n" +
-            "     j as\n" +
-            "         (delete from user_favorite\n" +
-            "             where user_favorite.user_id=:userId\n" +
-            "             ),\n" +
             "delete from users\n" +
             "where users.id=:userId\n",nativeQuery = true)
     void deleteUserById(@Param("userId")Long userId);

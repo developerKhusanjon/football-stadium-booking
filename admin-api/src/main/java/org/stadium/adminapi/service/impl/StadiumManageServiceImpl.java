@@ -191,7 +191,7 @@ public class StadiumManageServiceImpl implements StadiumManageService {
         if (file == null || compressFile == null)
             throw new BadRequestAlertException("Image file or compress image file not provided", "image", "file/compressFile", HttpStatus.BAD_REQUEST);
 
-        String path = "/articles/images/";
+        String path = "/";
         String imageUrl = uploadImageFile(file, path);
         String compressImgUrl = uploadImageFile(compressFile, path + "compress/");
 
